@@ -5,6 +5,25 @@
     white-space: normal;
 }
 
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
 .wrapper {
     width: 100%;
     height: 100vh;
@@ -12,6 +31,7 @@
     .tasks {
         background: white;
         width: 20%;
+        overflow-y: scroll;
         h2 {
             padding: 12px;
             text-align: center;
@@ -36,10 +56,38 @@
         display: grid;
         grid-column-gap: 10px;
         .list-input {
-            border: none;
-            border-bottom: 1px solid black;
-            outline: none;
-            padding: 0.3em;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 4px;
+            margin: 8px 24px;
+        }
+        .btn {
+            margin: 0 128px 8px;
+            border-radius: 64px;
+        }
+    }
+}
+
+.todo-main {
+    width: 80%;
+    background-color: #09d8df;
+    padding: 96px;
+    .main-window {
+        background-color: white;
+        height: 100%;
+        .todo-header {
+            background-color: red;
+            height: 80px;
+            h3 {
+                text-align: center;
+            }
+            p {
+                padding: 35px 0 0 10px;
+            }
+        }
+        .todo-body {
+            height: 85%;
         }
     }
 }

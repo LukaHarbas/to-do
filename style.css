@@ -5,6 +5,25 @@
   white-space: normal;
 }
 
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
 .wrapper {
   width: 100%;
   height: 100vh;
@@ -13,6 +32,7 @@
 .wrapper .tasks {
   background: white;
   width: 20%;
+  overflow-y: scroll;
 }
 .wrapper .tasks h2 {
   padding: 12px;
@@ -38,8 +58,36 @@
   grid-column-gap: 10px;
 }
 .wrapper .main-form .list-input {
-  border: none;
-  border-bottom: 1px solid black;
-  outline: none;
-  padding: 0.3em;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 8px 24px;
+}
+.wrapper .main-form .btn {
+  margin: 0 128px 8px;
+  border-radius: 64px;
+}
+
+.todo-main {
+  width: 80%;
+  background-color: #09d8df;
+  padding: 96px;
+}
+.todo-main .main-window {
+  background-color: white;
+  height: 100%;
+}
+.todo-main .main-window .todo-header {
+  background-color: red;
+  height: 80px;
+}
+.todo-main .main-window .todo-header h3 {
+  text-align: center;
+}
+.todo-main .main-window .todo-header p {
+  padding: 35px 0 0 10px;
+}
+.todo-main .main-window .todo-body {
+  height: 85%;
 }/*# sourceMappingURL=style.css.map */
