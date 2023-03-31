@@ -88,6 +88,23 @@
         }
         .todo-body {
             height: 85%;
+            padding: 24px;
+            .input-main {
+                display: flex;
+                flex-flow: column;
+                gap: 30px;
+                height: 90%;
+            }
+        }
+        .new-input {
+            text-align: center;
+            .btn-create {
+                margin-right: 200px;
+            }
         }
     }
+}
+
+.delete-window {
+    padding: 24px;
 }

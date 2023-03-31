@@ -90,4 +90,21 @@
 }
 .todo-main .main-window .todo-body {
   height: 85%;
+  padding: 24px;
+}
+.todo-main .main-window .todo-body .input-main {
+  display: flex;
+  flex-flow: column;
+  gap: 30px;
+  height: 90%;
+}
+.todo-main .main-window .new-input {
+  text-align: center;
+}
+.todo-main .main-window .new-input .btn-create {
+  margin-right: 200px;
+}
+
+.delete-window {
+  padding: 24px;
 }/*# sourceMappingURL=style.css.map */

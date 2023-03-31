@@ -2,6 +2,12 @@ var listsContainer = document.querySelector('[data-lists]')
 var newListForm = document.querySelector('[data-new-list-form]')
 var newListInput = document.querySelector('[data-new-list-input]')
 var newListDescription = document.querySelector('[data-new-list-description]')
+var deleteListButton = document.querySelector('[data-delete-list-button]')
+var listDisplayContainer = document.querySelector('[data-list-display-container]')
+var listTitleElement = document.querySelector('[data-list-title]')
+var listDateElement = document.querySelector('[data-list-date]')
+var tasksContainer = document.querySelector('[data-tasks]')
+var taskTemplate = document.querySelector('.task-template')
 
 var LOCAL_STORAGE_LIST_KEY = 'todo.lists'
 var LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'todo.selectedListId'
@@ -29,10 +35,18 @@ newListForm.addEventListener('submit', e => {
     newListDescription.value = null
 })
 
-
+deleteListButton.addEventListener('click', e => {
+    lists = lists.filter(list => list.id !== selectedListId)
+    selectedListId = null
+    saveAndRender()
+})
 
 function createList(name, param) {
-    return { id: Date.now().toString(), name: name, description: param, tasks:[] }
+    return { id: Date.now().toString(), name: name, description: param, tasks:[{
+        id: '1',
+        name: 'test1',
+        complete: true
+    }] }
 }
 
 function saveAndRender() {
@@ -47,6 +61,33 @@ function save() {
 
 function render() {
     clearElement(listsContainer)
+    renderLists()
+
+    var selectedList = lists.find(list => list.id === selectedListId)
+    if (selectedListId == null) {
+        listDisplayContainer.style.display = 'none'
+    } else {
+        listDisplayContainer.style.display = ''
+        listTitleElement.innerText = selectedList.name
+        clearElement(tasksContainer)
+    }
+}
+
+function renderTasks(selectedList) {
+    clearElement(selectedList)
+    selectedList.tasks.forEach(task => {
+        var taskElement = document.importNode(taskTemplate.content, true)
+        var checkbox = taskElement.querySelector('input')
+        checkbox.id = task.id
+        checkbox.checked = task.complete
+        var label = taskElement.querySelector('label')
+        label.htmlFor = task.id
+        label.append(task.name)
+        tasksContainer.appendChild(taskElement)
+    })
+}
+
+function renderLists() {
     lists.forEach(list => {
         var listElement = document.createElement('li')
         listElement.dataset.listId = list.id
