@@ -8,6 +8,8 @@ var listTitleElement = document.querySelector('[data-list-title]')
 var listDateElement = document.querySelector('[data-list-date]')
 var tasksContainer = document.querySelector('[data-tasks]')
 var taskTemplate = document.querySelector('.task-template')
+var newTaskForm = document.querySelector('[data-new-task-form]')
+var newTaskInput = document.querySelector('[data-new-task-input]')
 
 var LOCAL_STORAGE_LIST_KEY = 'todo.lists'
 var LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'todo.selectedListId'
@@ -35,6 +37,17 @@ newListForm.addEventListener('submit', e => {
     newListDescription.value = null
 })
 
+newTaskForm.addEventListener('submit', e => {
+    e.preventDefault()
+    var taskName = newTaskInput.value
+    var task = createTask(taskName)
+    if (!taskName) return 
+    var selectedList = lists.find(list => list.id === selectedListId)
+    selectedList.tasks.push(task)
+    saveAndRender()
+    newTaskInput.value = null
+})
+
 deleteListButton.addEventListener('click', e => {
     lists = lists.filter(list => list.id !== selectedListId)
     selectedListId = null
@@ -47,6 +60,10 @@ function createList(name, param) {
         name: 'test1',
         complete: true
     }] }
+}
+
+function createTask(name) {
+    return { id: Date.now().toString(), name: name, complete: false }
 }
 
 function saveAndRender() {
@@ -70,6 +87,7 @@ function render() {
         listDisplayContainer.style.display = ''
         listTitleElement.innerText = selectedList.name
         clearElement(tasksContainer)
+        renderTasks(selectedList)
     }
 }
 
