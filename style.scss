@@ -29,25 +29,32 @@
     height: 100vh;
     display: flex;
     .tasks {
-        background: white;
+        background: #355C7D;
         width: 20%;
         overflow-y: scroll;
         h2 {
             padding: 12px;
             text-align: center;
+            font-size: 40px;
+            color: #F8B195;
         }
         .task-lists {
-            font-size: 16px;
+            font-size: 20px;
             list-style: none;
+            color: #c06c84;
             .list-name {
                 border-radius: 8px;
                 height: 100px;
                 text-align: center;
                 margin: 1em;
                 cursor: pointer;
-                border: 2px solid #09d8df;
+                border: 2px solid #c06c8479;
                 &.active-list {
-                    border: 2px black solid;
+                    border: 2px solid #F8B195;
+                }
+                p {
+                    padding: 10px 0 0 10px;
+                    text-align: left;
                 }
             }
         }
@@ -57,28 +64,40 @@
         grid-column-gap: 10px;
         .list-input {
             text-align: center;
-            border: 1px solid black;
-            border-radius: 10px;
+            border: none;
+            border-bottom: 1px solid #F67280;
+            color: #F8B195;
             padding: 4px;
             margin: 8px 24px;
+            background: transparent;
+            font-size: 16px;
+            &:focus {
+                outline-style: none;
+                box-shadow: none;
+            }
         }
         .btn {
-            margin: 0 128px 8px;
-            border-radius: 64px;
+            background:none;
+            border:none;
+            padding:0;
+            cursor: pointer;
+            color: #F8B195;
         }
     }
 }
 
 .todo-main {
     width: 80%;
-    background-color: #09d8df;
+    background-color: #355C7D;
     padding: 96px;
+    border-left: 1px black solid;
     .main-window {
-        background-color: white;
+        background-color: #355C7D;
         height: 100%;
         .todo-header {
-            background-color: red;
+            background-color: #355C7D;
             height: 80px;
+            border: 1px black solid;
             h3 {
                 text-align: center;
             }
@@ -89,6 +108,7 @@
         .todo-body {
             height: 85%;
             padding: 24px;
+            border: 1px solid black;
             .input-main {
                 display: flex;
                 flex-flow: column;
@@ -98,8 +118,35 @@
         }
         .new-input {
             text-align: center;
+            .new-task {
+                text-align: center;
+                border: none;
+                border-bottom: 1px solid #F67280;
+                color: #F8B195;
+                padding: 4px;
+                margin: 8px 24px;
+                background: transparent;
+                font-size: 16px;
+                &:focus {
+                    outline-style: none;
+                    box-shadow: none;
+                }
+            }
             .btn-create {
                 margin-right: 200px;
+                background:none;
+                border:none;
+                padding:0;
+                cursor: pointer;
+                color: #F8B195;
+            }
+            .btn-delete-task {
+                margin-right: 200px;
+                background:none;
+                border:none;
+                padding:0;
+                cursor: pointer;
+                color: #F8B195;
             }
         }
     }
@@ -107,4 +154,67 @@
 
 .delete-window {
     padding: 24px;
+    .btn-delete {
+        background:none;
+        border:none;
+        margin:0;
+        padding:0;
+        cursor: pointer;
+        color: #F8B195;
+    }
 }
+
+.task {
+    border-bottom: 1px black solid;
+    padding-bottom: 16px;
+    label {
+        position: relative;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: 600;
+        user-select: none;
+            &::before {
+                position: absolute;
+                content: attr(data-content);
+                color: lightgray;
+                clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+                text-decoration: line-through;
+                text-decoration-thickness: 3px;
+                text-decoration-color: black;
+                transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    }
+    input[type="checkbox"] {
+        position: relative;
+        width: 1.5em;
+        height: 1.5em;
+        border: 1px solid gray;
+        border-radius: 4px;
+        appearance: none;
+        outline: 0;
+        cursor: pointer;
+        transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+        &::before {
+          position: absolute;
+          content: '';
+          display: block;
+          left: 5px;
+          width: 6px;
+          height: 12px;
+          border-style: solid;
+          border-color: #6C5B7B;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+          opacity: 0;
+        }
+        &:checked {
+          color: white;
+          border-color: #F8B195;
+          background: #F8B195;
+          &::before {
+            opacity: 1;
+        }
+        }
+    }
+}
+

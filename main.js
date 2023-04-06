@@ -10,6 +10,7 @@ var tasksContainer = document.querySelector('[data-tasks]')
 var taskTemplate = document.querySelector('.task-template')
 var newTaskForm = document.querySelector('[data-new-task-form]')
 var newTaskInput = document.querySelector('[data-new-task-input]')
+var clearCompletedTask = document.querySelector('[data-clear-complete-task]')
 
 var LOCAL_STORAGE_LIST_KEY = 'todo.lists'
 var LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'todo.selectedListId'
@@ -23,6 +24,21 @@ listsContainer.addEventListener('click', e => {
         selectedListId = e.target.dataset.listId
         saveAndRender()
     }
+})
+
+tasksContainer.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'input') {
+        var selectedList = lists.find(list => list.id === selectedListId)
+        var selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
+        selectedTask.complete = e.target.checked
+        save()
+    }
+  })
+
+clearCompletedTask.addEventListener('click', e => {
+    var selectedList = lists.find(list => list.id === selectedListId)
+    selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
+    saveAndRender()
 })
 
 newListForm.addEventListener('submit', e => {
@@ -55,11 +71,7 @@ deleteListButton.addEventListener('click', e => {
 })
 
 function createList(name, param) {
-    return { id: Date.now().toString(), name: name, description: param, tasks:[{
-        id: '1',
-        name: 'test1',
-        complete: true
-    }] }
+    return { id: Date.now().toString(), name: name, description: param, tasks:[] }
 }
 
 function createTask(name) {
@@ -79,31 +91,31 @@ function save() {
 function render() {
     clearElement(listsContainer)
     renderLists()
-
     var selectedList = lists.find(list => list.id === selectedListId)
+    var currentDate = new Date()
     if (selectedListId == null) {
         listDisplayContainer.style.display = 'none'
     } else {
         listDisplayContainer.style.display = ''
         listTitleElement.innerText = selectedList.name
+        listDateElement.innerText = 
         clearElement(tasksContainer)
         renderTasks(selectedList)
     }
 }
 
 function renderTasks(selectedList) {
-    clearElement(selectedList)
     selectedList.tasks.forEach(task => {
-        var taskElement = document.importNode(taskTemplate.content, true)
-        var checkbox = taskElement.querySelector('input')
-        checkbox.id = task.id
-        checkbox.checked = task.complete
-        var label = taskElement.querySelector('label')
-        label.htmlFor = task.id
-        label.append(task.name)
-        tasksContainer.appendChild(taskElement)
+      var taskElement = document.importNode(taskTemplate.content, true)
+      var checkbox = taskElement.querySelector('input')
+      checkbox.id = task.id
+      checkbox.checked = task.complete
+      var label = taskElement.querySelector('label')
+      label.htmlFor = task.id
+      label.append(task.name)
+      tasksContainer.appendChild(taskElement)
     })
-}
+  }
 
 function renderLists() {
     lists.forEach(list => {

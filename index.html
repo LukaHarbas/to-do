@@ -23,9 +23,9 @@
                 </ul>
 
                 <form action="" class="main-form" data-new-list-form>
-                    <input type="text" class="list-input" placeholder="list name" data-new-list-input/>
-                    <input type="text" class="list-input" placeholder="list description" data-new-list-description/>
-                    <button class="btn">+</button>
+                    <input type="text" class="list-input" placeholder="Enter list name" data-new-list-input/>
+                    <input type="text" class="list-input" placeholder="Enter list description" data-new-list-description/>
+                    <button class="btn">Add a new list</button>
                 </form>
             </div>
 
@@ -37,32 +37,12 @@
                     </div>
                     <div class="todo-body">
                         <div class="input-main" data-tasks>
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                                Proba broj #1
-                            </label>
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                                Proba broj #2
-                            </label>
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                                Proba broj #3
-                            </label>
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                                Proba broj #4
-                            </label>
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                                Proba broj #5   
-                            </label>
                         </div>
                         <div class="new-input">
                             <form action="" data-new-task-form>
-                                <input type="text" class="new-task" placeholder="new-task-name" data-new-task-input>
+                                <input type="text" class="new-task" placeholder="new task name" data-new-task-input>
                                 <button class="btn-create">Create a new task</button> 
-                                <button class="btn-delete-task">Delete task</button>
+                                <button class="btn-delete-task" data-clear-complete-task>Delete task</button>
                             </form>
                         </div>
                     </div>
@@ -73,12 +53,13 @@
             </div>
 
         </div>
-<template class="task-template">
-    <div class="input-main" data-tasks>
+
+    <template class="task-template">
+    <div class="task">
         <label>
             <input type="checkbox">
         </label>
     </div>
-</template>
+    </template>
   </body>
 </html>
