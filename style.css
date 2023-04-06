@@ -45,18 +45,19 @@
 }
 .wrapper .tasks .task-lists {
   font-size: 20px;
-  list-style: none;
+  font-size: 20px;
+  font-size: 16px;
   color: #03256c;
+  list-style: none;
 }
 .wrapper .tasks .task-lists .list-name {
   border-radius: 8px;
   height: 100px;
   text-align: center;
   margin: 1em;
-  cursor: pointer;
   border: 2px solid #03256c;
+  border: 2px solid #09d8df;
 }
-.wrapper .tasks .task-lists .list-name.active-list {
   border: 2px solid #fff;
 }
 .wrapper .tasks .task-lists .list-name p {
@@ -64,75 +65,75 @@
   text-align: left;
   font-size: 14px;
   word-break: break-all;
+  border: 2px black solid;
 }
 .wrapper .main-form {
   display: grid;
   grid-column-gap: 10px;
 }
 .wrapper .main-form .list-input {
-  text-align: center;
   border: none;
   border-bottom: 1px solid #03256c;
   color: #03256c;
+  border-radius: 10px;
   padding: 4px;
-  margin: 8px 24px;
   background: transparent;
   font-size: 16px;
 }
 .wrapper .main-form .list-input:focus {
   outline-style: none;
   box-shadow: none;
+  margin: 8px 24px;
 }
-.wrapper .main-form .btn {
   background: none;
   border: none;
   padding: 10px 0 10px 0;
   cursor: pointer;
   color: #03256c;
+  border-radius: 64px;
 }
 
 .todo-main {
-  width: 80%;
   background-color: #06BEE1;
-  padding: 96px;
+  background-color: #09d8df;
   border-left: 1px #3c345c solid;
+  padding: 96px;
 }
-.todo-main .main-window {
   background-color: #fff;
-  height: 100%;
+  background-color: white;
   padding-bottom: 6px;
+  height: 100%;
 }
-.todo-main .main-window .todo-header {
   background-color: #fff;
-  height: 80px;
+  background-color: red;
   border-bottom: 1px solid #3c345c;
+  height: 80px;
 }
 .todo-main .main-window .todo-header h3 {
-  text-align: center;
   padding-top: 10px;
   font-size: 28px;
+  text-align: center;
 }
-.todo-main .main-window .todo-header p {
   padding: 18px 0 0 10px;
+  padding: 35px 0 0 10px;
 }
 .todo-main .main-window .todo-body {
   height: 85%;
-  padding: 24px;
   overflow: auto;
+  padding: 24px;
 }
 .todo-main .main-window .todo-body .input-main {
   display: flex;
   flex-flow: column;
   gap: 30px;
   height: 90%;
-}
 
 .new-input {
   text-align: center;
   padding-top: 8px;
 }
 .new-input .new-task {
-  text-align: center;
+.todo-main .main-window .new-input {
   border: none;
   border-bottom: 1px solid #3c345c;
   color: #3c345c;
@@ -153,9 +154,9 @@
   cursor: pointer;
   color: #3c345c;
   font-weight: 700;
-}
+  text-align: center;
 .new-input .btn-delete-task {
-  margin-right: 200px;
+.todo-main .main-window .new-input .btn-create {
   background: none;
   border: none;
   padding: 0;
@@ -171,8 +172,8 @@
   cursor: pointer;
   color: #3c345c;
   font-weight: 700;
+  margin-right: 200px;
 }
-
 .task {
   border-bottom: 1px #3c345c solid;
   padding-bottom: 16px;
@@ -232,4 +233,5 @@
 }
 .task input[type=checkbox]:checked::before {
   opacity: 1;
+  padding: 24px;
 }/*# sourceMappingURL=style.css.map */
