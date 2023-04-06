@@ -92,13 +92,13 @@ function render() {
     clearElement(listsContainer)
     renderLists()
     var selectedList = lists.find(list => list.id === selectedListId)
-    var currentDate = moment().format("DD/MM/YYYY")
+    var currentDate = new Date().toLocaleDateString('en-GB')
     if (selectedListId == null) {
         listDisplayContainer.style.display = 'none'
     } else {
         listDisplayContainer.style.display = ''
         listTitleElement.innerText = selectedList.name
-        listDateElement.innerHTML = currentDate
+        listDateElement.innerText = currentDate
         clearElement(tasksContainer)
         renderTasks(selectedList)
     }
